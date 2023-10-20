@@ -1,100 +1,50 @@
-import { Mail, Notifications, Pets } from "@mui/icons-material";
-import {
-  AppBar,
-  Avatar,
-  Badge,
-  Box,
-  InputBase,
-  Menu,
-  MenuItem,
-  styled,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router';
 
-const StyledToolbar = styled(Toolbar)({
-  display: "flex",
-  justifyContent: "space-between",
-});
+const Navbar = ({ isLogin }) => {
+    // 获取当前路由的信息
+    const location = useLocation();
+    const flag = location.pathname === '/official'
 
-const Search = styled("div")(({ theme }) => ({
-  backgroundColor: "white",
-  padding: "0 10px",
-  borderRadius: theme.shape.borderRadius,
-  width: "40%",
-}));
+    const [menuItem, setMenuItem] = useState([
+        { name: '社会招聘', href: '/official/social/', active: true },
+        { name: '实习招聘', href: '/official/trainee/', active: false },
+        { name: '校园招聘', href: 'https://campus.kuaishou.cn/recruit/campus/e/#/campus/index/', active: false },
+        { name: '关于快手', href: '/official/jianghu/', active: false },
+    ])
 
-const Icons = styled(Box)(({ theme }) => ({
-  display: "none",
-  alignItems: "center",
-  gap: "20px",
-  [theme.breakpoints.up("sm")]: {
-    display: "flex",
-  },
-}));
+    // 由于每次刷新页面时，menuItem 都会重新初始化为原始状态。你需要在组件挂载时（即 useEffect 或 componentDidMount 生命周期中）检查 URL，然后设置相应的 active 状态
+    useEffect(() => {
+        // 遍历item,当路由等于item.href时才改变item的样式
+        const updatedItems = menuItem.map(item => ({
+            ...item,
+            active: location.pathname === item.href
+        }));
+        setMenuItem(updatedItems);
+    }, [location, menuItem]);
 
-const UserBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: "10px",
-  [theme.breakpoints.up("sm")]: {
-    display: "none",
-  },
-}));
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <AppBar position="sticky">
-      <StyledToolbar>
-        <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
-          LAMA DEV
-        </Typography>
-        <Pets sx={{ display: { xs: "block", sm: "none" } }} />
-        <Search>
-          <InputBase placeholder="search..." />
-        </Search>
-        <Icons>
-          <Badge badgeContent={4} color="error">
-            <Mail />
-          </Badge>
-          <Badge badgeContent={2} color="error">
-            <Notifications />
-          </Badge>
-          <Avatar
-            sx={{ width: 30, height: 30 }}
-            src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            onClick={(e) => setOpen(true)}
-          />
-        </Icons>
-        <UserBox onClick={(e) => setOpen(true)}>
-          <Avatar
-            sx={{ width: 30, height: 30 }}
-            src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          />
-          <Typography variant="span">John</Typography>
-        </UserBox>
-      </StyledToolbar>
-      <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
-        open={open}
-        onClose={(e) => setOpen(false)}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-      >
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>My account</MenuItem>
-        <MenuItem>Logout</MenuItem>
-      </Menu>
-    </AppBar>
-  );
-};
+    return (
+        <div className='k-home-header' style={flag ? { background: 'transparent' } : { background: '#ffffff' }}>
+            <a className="k-home-header-logo" href="/official">
+                <div className={`k-home-header-logo-img ${flag ? '' : 'logo'}`}  >
+                </div>
+            </a>
+            {!isLogin &&
+                <ul>
+                    {menuItem.map(item => (
+                        <li key={item.name} className={`k-home-header-menu-item ${item.active && !flag ? 'active' : ''}`}>
+                            <a href={item.href} className={flag ? 'activeA' : 'activeNo'}>{item.name}</a>
+                        </li>
+                    ))}
+                </ul>
+            }
+            {!isLogin && <div className="k-home-header-dropdown">
+                <i className="common-presenter k-common-avatar"></i>
+                <a href="/official/login/">注册/登录</a>
+            </div>
+            }
+        </div>
+    )
+}
 
-export default Navbar;
+export default Navbar

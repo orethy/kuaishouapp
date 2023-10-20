@@ -1,32 +1,63 @@
-import Sidebar from "./components/Sidebar";
-import Feed from "./components/Feed";
-import Rightbar from "./components/Rightbar";
-import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider
+} from "react-router-dom";
+import "./style.scss"
+import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-import Add from "./components/Add";
-import { useState } from "react";
+import Footer from "./components/Footer";
+import Social from "./pages/Social";
+import Internship from "./pages/Internship";
+import Login from "./pages/Login";
+
+
+
+
+const Layout = () => {
+  return (
+    <>
+      <Navbar isLogin = {false} />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/official",
+        element: <Home />
+      }
+      , {
+        path: "/official/social",
+        element: <Social />
+      }
+      , {
+        path: "/official/trainee",
+        element: <Internship />
+      }
+    ]
+  }
+  , {
+    path: '/official/login',
+    element: <Login />
+  }
+]);
 
 function App() {
-  const [mode, setMode] = useState("light");
 
-  const darkTheme = createTheme({
-    palette: {
-      mode: mode,
-    },
-  });
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Box bgcolor={"background.default"} color={"text.primary"}>
-        <Navbar />
-        <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Sidebar setMode={setMode} mode={mode}/>
-          <Feed />
-          <Rightbar />
-        </Stack>
-        <Add />
-      </Box>
-    </ThemeProvider>
-  );
+    <div className="app">
+      <div className="container">
+        <RouterProvider router={router} />
+      </div>
+    </div>
+  )
 }
 
 export default App;

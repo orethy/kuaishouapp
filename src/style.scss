@@ -1,0 +1,572 @@
+/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+    font-family: 'iconfont';
+    /* Project id 4286065 */
+    src: url('//at.alicdn.com/t/c/font_4286065_yel3g72xx9.woff2?t=1697548114174') format('woff2'),
+        url('//at.alicdn.com/t/c/font_4286065_yel3g72xx9.woff?t=1697548114174') format('woff'),
+        url('//at.alicdn.com/t/c/font_4286065_yel3g72xx9.ttf?t=1697548114174') format('truetype');
+}
+
+.app {
+    display: block;
+    color: #333333;
+    font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+
+    a {
+        color: #333333;
+        text-decoration: none;
+        // background-color: transparent;
+        outline: none;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    i {
+        font-style: normal;
+        cursor: pointer;
+    }
+
+    ul,
+    li,
+    pre {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+        min-height: 100vh;
+        flex-direction: column;
+        position: relative;
+        background: #f3f4f5;
+
+        // 主页
+        .k-layout-content {
+
+            .k-home-index-page {
+                position: absolute;
+                top: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100vw;
+                height: 100vh;
+                flex-direction: column;
+
+                .k-home-bg {
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    overflow: hidden;
+                    background: #1d0d27;
+
+                    .k-home-bg-video {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                        z-index: -1;
+                    }
+                }
+
+                .home-index-title {
+                    position: relative;
+                    padding-bottom: 150px;
+
+                    .home-index-title-main {
+                        width: 31.69vw;
+                        min-width: 430px;
+                        padding-bottom: 21.087%;
+                        background: url("./img/future.png") center top/contain no-repeat;
+                    }
+
+                }
+            }
+        }
+
+        // 导航栏
+        .k-home-header {
+            min-height: 66px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 12.5vw;
+            z-index: 1;
+
+            a {
+                color: #ffffff;
+            }
+
+            .k-home-header-logo {
+                display: flex;
+                align-items: center;
+
+                .k-home-header-logo-img {
+                    display: block;
+                    width: 125px;
+                    height: 30px;
+                    background: center / contain no-repeat url(./img/logo.white.png);
+                }
+
+                .logo {
+                    background: center / contain no-repeat url(./img/logo.png);
+                }
+            }
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                list-style: none;
+
+                .k-home-header-menu-item {
+                    font-size: 16px;
+
+                    &:not(:last-child) {
+                        margin-right: 56px;
+                    }
+
+                    .activeA {
+                        color: #ffffff;
+                    }
+                }
+
+                .active {
+                    a {
+                        color: #ff6600;
+                        position: relative;
+                    }
+
+                    a::after {
+                        margin-top: 10px;
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 20px;
+                        height: 3px;
+                        background: #ff6600;
+                        border-radius: 2px;
+                        left: 50%;
+                        margin-left: -10px;
+                    }
+
+                }
+
+                .activeNo {
+                    color: #333;
+                }
+            }
+
+            .k-home-header-dropdown {
+                display: flex;
+                align-items: center;
+
+                .common-presenter {
+                    display: inline-block;
+                    width: 3.2vh;
+                    height: 3.2vh;
+                    background-image: url(./img/common-presenter.png);
+                    -moz-background-size: 100% 100%;
+                    background-size: 100% 100%;
+                    border-radius: 1.6vh;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        // Footer 
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 68px;
+            user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            border-top: 1px solid #e2e3e9;
+            color: #fff;
+
+            a {
+                color: #ffffff;
+            }
+
+            span {
+                display: inline-block;
+                font-size: 18px;
+                width: 18px;
+                height: 18px;
+                margin-left: 2px;
+                margin-right: 2px;
+                vertical-align: -4px;
+            }
+
+            .license-icon {
+                -moz-background-size: 100% 100%;
+                background-size: 100% 100%;
+                background-image: url(./img/police.png);
+            }
+
+
+            .police-icon {
+                background-image: url(https://ali.static.yximgs.com/static/img/widgets/footer/img/police-9ecb5b55.png);
+                -moz-background-size: 100% 100%;
+                background-size: 100% 100%;
+            }
+        }
+
+        // 主页
+        .k-social-index-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            // banner
+            .social-index-banner {
+                background-image: url(./img/banner1.png);
+                -moz-background-size: 100% 100%;
+                background-size: 100% 100%;
+                width: 100%;
+                padding-bottom: 12.5%;
+                height: 0;
+            }
+
+            // 过滤
+            .social-index-filters {
+                display: block;
+                width: 75vw;
+                padding: 0 40px;
+                margin-top: 1.6vh;
+                background: #ffffff;
+
+                // 过滤器
+                .k-common-filters {
+                    flex: 1;
+                    display: flex;
+                    width: 75vw;
+                    flex-direction: row;
+                    line-height: 50px;
+                    font-size: 14px;
+                    height: auto;
+
+                    .k-common-filters-title {
+                        display: inline-block;
+                        white-space: nowrap;
+                        margin-right: 40px;
+                        cursor: pointer;
+                    }
+
+                    .k-common-filters-items {
+                        display: flex;
+                        flex-direction: row;
+                        height: 54px;
+                        justify-content: space-between;
+                        overflow: hidden;
+
+                        &.tag-expand {
+                            height: auto;
+                        }
+
+
+                        .k-common-filters-items-tags {
+                            flex: 1;
+
+                            .filters-item {
+                                display: inline-block;
+                                height: 50px;
+
+
+                                .ant-tag {
+                                    cursor: pointer;
+                                    font-size: 14px;
+                                    color: #333333;
+                                    height: 30px;
+                                    line-height: 30px;
+                                    padding: 0 10px;
+                                    border-radius: 15px;
+                                }
+
+                                .ant-tag-checkable-checked {
+                                    background-color: #ff6600;
+                                    color: #fff;
+                                }
+                            }
+                        }
+
+                        .k-common-filters-items-expand {
+                            //    display: block;
+                            display: flex;
+                            justify-content: center;
+
+
+                            .iconfont {
+                                font-family: "iconfont";
+                                display: inline-block;
+                                width: 40px;
+                                height: 50px;
+                                font-size: 12px;
+                                color: #dddddd;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            // 热门搜索
+            .social-index-search {
+                width: 75vw;
+                margin-top: 1.6vh;
+                background: #ffffff;
+                padding: 20px 40px;
+                display: flex;
+                position: relative;
+                align-items: center;
+                line-height: 1.5;
+
+                .social-index-search-hot {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .search-hot-title {
+                        font-size: 14px;
+                        margin-right: 10px;
+                    }
+
+                    .k-common-text-tips {
+                        display: flex;
+
+                        .k-common-text-tips-item {
+                            height: 26px;
+                            line-height: 26px;
+                            padding: 0 10px;
+                            border-radius: 15px;
+                            color: #0099ff;
+                            font-size: 14px;
+                            cursor: pointer;
+
+                            &.tip-active {
+                                background-color: #ff6600;
+                                color: #ffffff !important;
+                            }
+                        }
+
+                        .k-common-text-tip-i {
+                            margin: 4px 10px 0 10px;
+                            width: 1px;
+                            height: 10px;
+                            background: #dddddd;
+                        }
+
+                    }
+                }
+
+                .k-common-search {
+                    position: absolute;
+                    right: 60px;
+
+                    .ant-input-search {
+
+                        input {
+                            border-radius: 22px;
+                            background: #f7f8f9;
+                            width: 100%;
+                            border: 1px solid white;
+                            height: 40px;
+                            padding: 4px 30px 4px 11px;
+                            font-size: 14px;
+                            position: relative;
+                            outline: none; //  移除样式
+                            margin-right: 30px;
+                            text-align: inherit;
+                            background-image: url('./img/放大镜.png');
+                            background-repeat: no-repeat;
+                            background-position: right 10px center;
+                            background-size: 22px 22px;
+
+                            &.active {
+                                transition: all 0.3s;
+                                border: 1px solid #ff8629;
+                            }
+                        }
+
+
+                    }
+                }
+
+            }
+
+            // table
+            .social-index-table {
+                width: 75vw;
+                background: #ffffff;
+                padding: 0 40px 40px 40px;
+
+                .ant-table-wrapper {
+                    .ant-spin-nested-loading {
+                        .ant-spin-container {
+                            .ant-table-body {
+                                display: flex;
+                                justify-content: center;
+                                flex-direction: column;
+                                gap: 20px;
+
+                                // 表格
+                                .ant-table-wrapper {
+                                    span {
+                                        color: #e3e3e3;
+                                        font-size: 20px;
+                                    }
+                                }
+
+                                .pagination {
+                                    display: flex;
+                                    justify-content: center;
+
+                                    .ant-pagination-item {
+                                        border: none;
+                                        background: none;
+
+                                        a {
+                                            font-weight: normal;
+                                            border-radius: 50%;
+                                            transition: none;
+
+                                            &:hover {
+                                                color: #ff6600;
+
+                                            }
+                                        }
+                                    }
+
+                                    .ant-pagination-item-active {
+                                        a {
+                                            color: #ff6600;
+                                            border: 1px solid #ff6600;
+                                        }
+                                    }
+
+                                    .ant-select {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        // login 
+        .login {
+            .k-login-index-page {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #ffffff;
+                min-height: calc(100vh - 70px);
+                margin-bottom: -64px;
+
+                .login-content {
+                    background: #ffffff;
+                    min-width: 47.25vw;
+                    min-height: 26.25vw;
+                    display: flex;
+                    border-radius: 15px;
+                    box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.05);
+
+                    .login-content-left {
+                        width: 47%;
+                        background: url(https://s2-11760.ssrcdn.com/kos/nlav11760/dev/careers-experienced/20231012-212128/assets/media/login-bg.8a96890e.png) left top / contain no-repeat;
+                    }
+
+                    .login-content-right {
+                        display: flex;
+                        flex: 1;
+                        max-width: 53%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        padding: 10vh 3.75vw 7.5vh 3.75vw;
+
+                        .right-form {
+                            width: 100%;
+
+                            .form-title {
+                                width: 100%;
+                                color: #ccc;
+                                font-size: 14px;
+                                text-align: center;
+                                cursor: pointer;
+
+                                .form-title__active {
+                                    color: #ff8000;
+                                }
+                            }
+
+                            .form-items {
+                                width: 100%;
+                                font-size: 14;
+                                margin-top: 40px;
+
+                                input {
+                                    border: none;
+                                    outline: none;
+                                }
+
+                                .login-name {
+                                    border-bottom: 1px solid #ff8000;
+                                    margin-top: 40px;
+
+                                    .item-content {
+                                        display: inline-block;
+                                        vertical-align: top;
+
+                                    }
+                                }
+
+                                .captcha {
+                                    margin-top: 40px;
+                                    border-bottom: 1px solid #ff8000;
+                                }
+
+                                .captcha2 {
+                                    margin-top: 40px;
+                                    border-bottom: 1px solid #dddddd;
+                                }
+                            }
+
+                            .login-content-right-bn {
+                                align-items: center;
+                                padding-top: 4.5vw;
+                                font-size: 14px;
+
+                                .ant-btn {
+                                    width: 240px;
+                                    height: 40px;
+                                    border-radius: 20px;
+                                    font-size: 15px;
+                                    border: 1px solid #ff6600;
+                                    background: #ff8000;
+                                    color: #fff;
+                                }
+
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

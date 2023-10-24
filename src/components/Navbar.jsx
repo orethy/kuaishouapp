@@ -40,7 +40,7 @@ const Navbar = ({ isLogin }) => {
             }
             {!isLogin && <div className="k-home-header-dropdown">
                 <i className="common-presenter k-common-avatar"></i>
-                <a href="/official/login/">注册/登录</a>
+                <a href="/official/login/" style={flag ? { color: '#ffffff' } : { color: '#333333' }}>注册/登录</a>
             </div>
             }
         </div>

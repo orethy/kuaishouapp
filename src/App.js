@@ -17,7 +17,7 @@ import Login from "./pages/Login";
 const Layout = () => {
   return (
     <>
-      <Navbar isLogin = {false} />
+      <Navbar isLogin={false} />
       <Outlet />
       <Footer />
     </>
@@ -54,6 +54,7 @@ function App() {
   return (
     <div className="app">
       <div className="container">
+        {/* 所有数据路由器对象都会传递到此组件以呈现您的应用程序并启用其余的数据 API。 */}
         <RouterProvider router={router} />
       </div>
     </div>
